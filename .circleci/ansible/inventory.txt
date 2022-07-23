@@ -1,1 +1,2 @@
 [web]
+ec2-3-86-224-50.compute-1.amazonaws.com
