@@ -1,27 +1,27 @@
 ---
-- name: "update apt packages."
+- name: Update apt packages
   become: yes
   apt:
     update_cache: yes
 
-- name: "upgrade packages"
+- name: Upgrade packages
   become: yes
   apt:
     upgrade: yes
 
-- name: "remove dependency no logger required"
+- name: Remove dependency no logger required
   become: yes
   apt:
     autoremove: yes
 
-- name: "install nodejs and npm"
+- name: Install nodejs and npm
   become: yes
   apt: 
     name: ["nodejs", "npm"]
     state: latest
     update_cache: yes
 
-- name: "install pm2"
+- name: Install pm2
   become: yes
   npm:
     name: pm2
