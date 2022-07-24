@@ -274,6 +274,8 @@ jobs:
       - image: alpine:latest
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/
       - run:
           name: Install dependencies
           command: |
@@ -283,6 +285,7 @@ jobs:
           command: |
             cd .circleci/ansible
             export BACKEND_IP=$(tail -1 inventory.txt)
+            echo "${BACKEND_IP}"
       - run:
           name: Backend smoke test.
           command: |
