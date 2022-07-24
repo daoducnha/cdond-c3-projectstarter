@@ -1,5 +1,9 @@
 ---
 
+- name: extract code
+  shell: | 
+    tar -zxvf artifact.tar.gz
+
 - name: npm install 
   shell: |
     npm install
