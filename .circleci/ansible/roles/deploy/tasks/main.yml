@@ -1,5 +1,9 @@
 ---
 
+- name: npm install 
+  shell: |
+    npm install
+
 - name: Stop node
   shell: |
     pm2 stop default
