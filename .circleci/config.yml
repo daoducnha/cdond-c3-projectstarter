@@ -22,9 +22,7 @@ commands:
           name: Revert migrations
           when: on_fail
           command: |
-            # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
             SUCCESS=$(curl --insecure  https://kvdb.io/9S14CacqjJbbyrvfnnBcSr/migration_<< parameters.workflow_id >>)
-            SUCCESS = 1
             if(( $SUCCESS==1 )); 
             then
                 cd ~/project/backend
@@ -199,7 +197,6 @@ jobs:
           command: |
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-              # If you are using kvdb.io, generate the bucket ID "9S14CacqjJbbyrvfnnBcSr" in your local terminal first
               curl --insecure https://kvdb.io/9S14CacqjJbbyrvfnnBcSr/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
       - destroy-environment
