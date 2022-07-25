@@ -30,7 +30,7 @@
     state: present
 
 - name: persist environment variable
-  become: yes
+  become: true
   shell: |
     touch  ~/.env
     echo TYPEORM_CONNECTION=$TYPEORM_CONNECTION > ~/.env
