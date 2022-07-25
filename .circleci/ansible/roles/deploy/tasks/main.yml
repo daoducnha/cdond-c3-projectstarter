@@ -1,6 +1,12 @@
 ---
 
-- name: extract code
+- name: copy artifact file
+  copy:
+    src: artifact.tar.gz
+    dest: ~/artifact.tar.gz
+    backup: yes
+
+- name: extract artifact file
   shell: | 
     tar -zxvf artifact.tar.gz
 
