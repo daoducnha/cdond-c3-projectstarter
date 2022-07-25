@@ -273,7 +273,7 @@ jobs:
 
   smoke-test:
     docker:
-      - image: alpine:latest
+      - image: python:3.9.1-alpine3.12
     shell: /bin/sh -leo pipefail
     environment:
       - BASH_ENV: /etc/profile
@@ -286,16 +286,13 @@ jobs:
           command: |
             apk add --update curl
       - run:
-          name: Get backend url
-          command: |
-            echo "get backend url"
-      - run:
           name: Backend smoke test.
           command: |
             # Fetch and prepare the BACKEND_IP env var
             cd .circleci/ansible
             export BACKEND_IP=$(tail -1 inventory.txt)
             export API_URL="http://${BACKEND_IP}:3030"
+            echo "${API_URL}"
             if curl "${API_URL}/api/status" | grep "ok"
             then
                 return 0
